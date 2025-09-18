@@ -161,11 +161,11 @@ footer {
 }
 
 .breed-section {
-    background: linear-gradient(rgba(108, 99, 255, 0.9), rgba(108, 99, 255, 0.9)),
-        url('https://images.unsplash.com/photo-1552053831-71594a27632d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2012&q=80');
+    background: linear-gradient(rgba(246, 246, 246, 0.696), rgba(206, 205, 205, 0.326)),
+        url('asset/pets_banner.jpeg');
     background-size: cover;
     background-position: center;
-    color: white;
+    color: #2d3748;
     padding: 4rem 0;
     border-radius: 15px;
     margin: 3rem 0;
