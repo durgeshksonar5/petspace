@@ -40,10 +40,6 @@ body {
     margin-top: 1rem;
 }
 
-.cm_b:hover {
-    color: var(--secondary-color) !important;
-}
-
 .searchbox {
     width: 300px;
     border: 1px solid #ced4da;

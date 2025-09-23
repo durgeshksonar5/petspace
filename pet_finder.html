@@ -1,0 +1,694 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Pet Finder - PetSpace</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/x-icon" href="asset/android-chrome-512x512.png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #0c2f5c;
+            --secondary: #ff6b6b;
+            --light: #f8f9fa;
+            --dark: #343a40;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #333;
+            background-color: #f9f9f9;
+        }
+        
+        
+        .cm_b .nav-link {
+            color: var(--dark);
+            font-weight: 500;
+        }
+        
+        .cm_b .nav-link:hover {
+            color: var(--primary);
+        }
+        
+        .cm_name {
+            color: var(--primary) !important;
+            font-weight: 600 !important;
+        }
+        
+        .btn-outline-dark {
+            border-color: var(--primary);
+            color: var(--primary);
+        }
+        
+        .btn-outline-dark:hover {
+            background-color: var(--primary);
+            color: white;
+        }
+        
+        .petfinder-hero {
+            background: linear-gradient(rgba(12, 47, 92, 0.8), rgba(12, 47, 92, 0.8)), url('https://images.unsplash.com/photo-1543466835-00a7907e9de1?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1074&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 80px 0;
+            margin-bottom: 40px;
+            border-radius: 0 0 20px 20px;
+        }
+        
+        .search-filters {
+            background-color: white;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .pet-card {
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s;
+            margin-bottom: 25px;
+            height: 100%;
+        }
+        
+        .pet-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+        
+        .pet-img {
+            height: 250px;
+            object-fit: cover;
+        }
+        
+        .pet-feature {
+            display: flex;
+            align-items: center;
+            margin-bottom: 8px;
+        }
+        
+        .pet-feature i {
+            color: var(--primary);
+            width: 24px;
+            margin-right: 10px;
+        }
+        
+        .badge-pet {
+            background-color: var(--primary);
+            color: white;
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+        }
+        
+        .section-title {
+            position: relative;
+            padding-bottom: 15px;
+            margin-bottom: 30px;
+        }
+        
+        .section-title:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background-color: var(--secondary);
+        }
+        
+        .pagination {
+            justify-content: center;
+            margin-top: 40px;
+        }
+        
+        .page-link {
+            color: var(--primary);
+            border: 1px solid #dee2e6;
+            padding: 0.5rem 0.75rem;
+        }
+        
+        .page-link:hover {
+            color: var(--primary);
+            background-color: #f8f9fa;
+        }
+        
+        .page-item.active .page-link {
+            background-color: var(--primary);
+            border-color: var(--primary);
+        }
+        
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 60px 0 30px;
+            margin-top: 60px;
+        }
+        
+        .footer-links a {
+            color: #ddd;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: white;
+        }
+        
+        .social-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.1);
+            color: white;
+            margin-right: 10px;
+            transition: all 0.3s;
+        }
+        
+        .social-icon:hover {
+            background-color: var(--primary);
+            transform: translateY(-3px);
+        }
+        
+        /* Scroll to Top Button */
+        #scrollTopBtn {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--primary);
+            color: white;
+            border: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s;
+            z-index: 1000;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        #scrollTopBtn.show {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        #scrollTopBtn:hover {
+            background: var(--secondary);
+            transform: translateY(-3px);
+        }
+    </style>
+</head>
+
+<body>
+    <!-- navbar -->
+    <nav class="navbar navbar-expand-lg bg-white sticky-top">
+        <div class="container-fluid fs-6">
+            <a class="navbar-brand" href="#"> <img src="asset/petspace_crop-removebg.png" alt="" height="50px"></a>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0 fw-medium">
+
+                    <li class="nav-item cm_b">
+                        <a class="nav-link active" aria-current="page" href="index.html">Home</a>
+                    </li>
+
+                    <li class="nav-item cm_b">
+                        <a class="nav-link" href="whyPetSpace.html">Why PetSpace</a>
+                    </li>
+
+                    <li class="nav-item dropdown cm_b">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                            Services
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="pet_finder.html">Pet Finder</a></li>
+                            <li><a class="dropdown-item" href="#">Find Stud</a></li>
+                            <li><a class="dropdown-item" href="#">Find vet/ Doctor</a></li>
+                            <li><a class="dropdown-item" href="#">Find Trainer</a></li>
+                            <li><a class="dropdown-item" href="#">Find Petshop</a></li>
+                            <li><a class="dropdown-item" href="#">Find Hostel</a></li>
+                            <li><a class="dropdown-item" href="#">Find Shelter</a></li>
+                            <li><a class="dropdown-item" href="#">Pet Events</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="nav-item cm_b">
+                        <a class="nav-link" href="contact.html">Contact Us</a>
+                    </li>
+                </ul>
+
+                <ul class="navbar-nav me-3 mb-2 mb-lg-0 fw-medium">
+                    <li class="nav-item ps-2 cm_b">
+                        <a class="nav-link active cm_name" href="#"> <i class="fa-solid fa-location-dot"></i> Pune</a>
+                    </li>
+                </ul>
+
+                <form class="d-flex shadow-sm rounded-3" role="search" style="height: 40px;">
+                    <a href="login.html" class="btn btn-outline-dark fs-6" type="submit"> <b><i
+                                class="fa-regular fa-user"></i>
+                            Hello,
+                            Login Here...</b> </a>
+                </form>
+
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="petfinder-hero">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 mx-auto text-center">
+                    <h1 class="display-4 fw-bold mb-3">Find Your Perfect Pet Companion</h1>
+                    <p class="lead mb-5">Browse through hundreds of pets waiting for their forever homes. Filter by breed, age, location and more to find your ideal match.</p>
+                </div>
+            </div>
+            
+            <!-- Search Filters -->
+            <div class="row">
+                <div class="col-lg-10 mx-auto">
+                    <div class="search-filters">
+                        <form>
+                            <div class="row g-3">
+                                <div class="col-md-4">
+                                    <label class="form-label">Pet Type</label>
+                                    <select class="form-select">
+                                        <option selected>All Pets</option>
+                                        <option>Dogs</option>
+                                        <option>Cats</option>
+                                        <option>Birds</option>
+                                        <option>Fish</option>
+                                        <option>Small Animals</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-4">
+                                    <label class="form-label">Breed</label>
+                                    <select class="form-select">
+                                        <option selected>Any Breed</option>
+                                        <option>Labrador Retriever</option>
+                                        <option>German Shepherd</option>
+                                        <option>Golden Retriever</option>
+                                        <option>Bulldog</option>
+                                        <option>Beagle</option>
+                                        <option>Poodle</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-4">
+                                    <label class="form-label">Age</label>
+                                    <select class="form-select">
+                                        <option selected>Any Age</option>
+                                        <option>Puppy/Kitten (0-1 yr)</option>
+                                        <option>Young (1-3 yrs)</option>
+                                        <option>Adult (3-8 yrs)</option>
+                                        <option>Senior (8+ yrs)</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-4">
+                                    <label class="form-label">Gender</label>
+                                    <select class="form-select">
+                                        <option selected>Any Gender</option>
+                                        <option>Male</option>
+                                        <option>Female</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-4">
+                                    <label class="form-label">Location</label>
+                                    <select class="form-select">
+                                        <option selected>Pune & Nearby</option>
+                                        <option>Mumbai</option>
+                                        <option>Delhi</option>
+                                        <option>Bangalore</option>
+                                        <option>Hyderabad</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-4">
+                                    <label class="form-label">Size</label>
+                                    <select class="form-select">
+                                        <option selected>Any Size</option>
+                                        <option>Small</option>
+                                        <option>Medium</option>
+                                        <option>Large</option>
+                                    </select>
+                                </div>
+                                <div class="col-12 text-center mt-4">
+                                    <button class="btn btn-primary px-5 py-2 fs-5"><i class="fas fa-search me-2"></i> Find Pets</button>
+                                    <button class="btn btn-outline-primary px-5 py-2 fs-5 ms-2">Reset Filters</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pets Listing -->
+    <section class="py-5">
+        <div class="container">
+            <div class="d-flex justify-content-between align-items-center mb-5">
+                <h2 class="section-title">Available Pets <span class="badge bg-primary">124</span></h2>
+                <div>
+                    <select class="form-select w-auto d-inline-block">
+                        <option selected>Sort by: Newest</option>
+                        <option>Sort by: Oldest</option>
+                        <option>Sort by: Name A-Z</option>
+                        <option>Sort by: Name Z-A</option>
+                    </select>
+                </div>
+            </div>
+            
+            <div class="row">
+                <!-- Pet 1 -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="pet-card">
+                        <img src="https://images.unsplash.com/photo-1554692918-08fa0fdc9db3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80" class="pet-img w-100" alt="Golden Retriever">
+                        <div class="p-4">
+                            <div class="d-flex justify-content-between align-items-center mb-3">
+                                <h4 class="mb-0">Max</h4>
+                                <span class="badge-pet">Male</span>
+                            </div>
+                            <div class="pet-feature">
+                                <i class="fas fa-paw"></i>
+                                <span>Golden Retriever</span>
+                            </div>
+                            <div class="pet-feature">
+                                <i class="fas fa-birthday-cake"></i>
+                                <span>2 years old</span>
+                            </div>
+                            <div class="pet-feature">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <span>Pune, Maharashtra</span>
+                            </div>
+                            <p class="mt-3">Friendly and playful. Loves long walks and cuddles. Vaccinated and neutered.</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <a href="#" class="btn btn-outline-primary">View Details</a>
+                                <span class="text-primary fw-bold">₹5,000</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Pet 2 -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="pet-card">
+                        <img src="https://images.unsplash.com/photo-1592194996308-7b43878e84a6?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80" class="pet-img w-100" alt="Maine Coon Cat">
+                        <div class="p-4">
+                            <div class="d-flex justify-content-between align-items-center mb-3">
+                                <h4 class="mb-0">Luna</h4>
+                                <span class="badge-pet">Female</span>
+                            </div>
+                            <div class="pet-feature">
+                                <i class="fas fa-paw"></i>
+                                <span>Maine Coon</span>
+                            </div>
+                            <div class="pet-feature">
+                                <i class="fas fa-birthday-cake"></i>
+                                <span>3 years old</span>
+                            </div>
+                            <div class="pet-feature">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <span>Mumbai, Maharashtra</span>
+                            </div>
+                            <p class="mt-3">Gentle giant. Very affectionate and gets along with other pets. Litter trained.</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <a href="#" class="btn btn-outline-primary">View Details</a>
+                                <span class="text-primary fw-bold">₹7,500</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Pet 3 -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="pet-card">
+                        <img src="https://images.unsplash.com/photo-1585110396000-c9ffd4e4b308?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80" class="pet-img w-100" alt="Rabbit">
+                        <div class="p-4">
+                            <div class="d-flex justify-content-between align-items-center mb-3">
+                                <h4 class="mb-0">Coco</h4>
+                                <span class="badge-pet">Female</span>
+                            </div>
+                            <div class="pet-feature">
+                                <i class="fas fa-paw"></i>
+                                <span>Holland Lop</span>
+                            </div>
+                            <div class="pet-feature">
+                                <i class="fas fa-birthday-cake"></i>
+                                <span>1 year old</span>
+                            </div>
+                            <div class="pet-feature">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <span>Pune, Maharashtra</span>
+                            </div>
+                            <p class="mt-3">Curious and energetic. Loves to explore and play with toys. Cage trained.</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <a href="#" class="btn btn-outline-primary">View Details</a>
+                                <span class="text-primary fw-bold">₹3,000</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Pet 4 -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="pet-card">
+                        <img src="https://images.unsplash.com/photo-1577023311544-360c127e2b8e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80" class="pet-img w-100" alt="German Shepherd">
+                        <div class="p-4">
+                            <div class="d-flex justify-content-between align-items-center mb-3">
+                                <h4 class="mb-0">Rocky</h4>
+                                <span class="badge-pet">Male</span>
+                            </div>
+                            <div class="pet-feature">
+                                <i class="fas fa-paw"></i>
+                                <span>German Shepherd</span>
+                            </div>
+                            <div class="pet-feature">
+                                <i class="fas fa-birthday-cake"></i>
+                                <span>4 years old</span>
+                            </div>
+                            <div class="pet-feature">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <span>Bangalore, Karnataka</span>
+                            </div>
+                            <p class="mt-3">Loyal and protective. Trained in basic commands. Good with older children.</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <a href="#" class="btn btn-outline-primary">View Details</a>
+                                <span class="text-primary fw-bold">₹8,000</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Pet 5 -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="pet-card">
+                        <img src="https://images.unsplash.com/photo-1533738363-b7f9aef128ce?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=735&q=80" class="pet-img w-100" alt="Cat">
+                        <div class="p-4">
+                            <div class="d-flex justify-content-between align-items-center mb-3">
+                                <h4 class="mb-0">Mittens</h4>
+                                <span class="badge-pet">Male</span>
+                            </div>
+                            <div class="pet-feature">
+                                <i class="fas fa-paw"></i>
+                                <span>Domestic Shorthair</span>
+                            </div>
+                            <div class="pet-feature">
+                                <i class="fas fa-birthday-cake"></i>
+                                <span>5 months old</span>
+                            </div>
+                            <div class="pet-feature">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <span>Pune, Maharashtra</span>
+                            </div>
+                            <p class="mt-3">Playful kitten looking for a forever home. Litter trained and vaccinated.</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <a href="#" class="btn btn-outline-primary">View Details</a>
+                                <span class="text-primary fw-bold">Adoption</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Pet 6 -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="pet-card">
+                        <img src="https://images.unsplash.com/photo-1559056199-641a0ac8b55e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80" class="pet-img w-100" alt="Parrot">
+                        <div class="p-4">
+                            <div class="d-flex justify-content-between align-items-center mb-3">
+                                <h4 class="mb-0">Kiwi</h4>
+                                <span class="badge-pet">Male</span>
+                            </div>
+                            <div class="pet-feature">
+                                <i class="fas fa-paw"></i>
+                                <span>African Grey</span>
+                            </div>
+                            <div class="pet-feature">
+                                <i class="fas fa-birthday-cake"></i>
+                                <span>2 years old</span>
+                            </div>
+                            <div class="pet-feature">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <span>Hyderabad, Telangana</span>
+                            </div>
+                            <p class="mt-3">Smart and talkative. Can mimic words and sounds. Comes with cage.</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <a href="#" class="btn btn-outline-primary">View Details</a>
+                                <span class="text-primary fw-bold">₹12,000</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Pagination -->
+            <nav aria-label="Page navigation">
+                <ul class="pagination">
+                    <li class="page-item disabled">
+                        <a class="page-link" href="#" tabindex="-1">Previous</a>
+                    </li>
+                    <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                    <li class="page-item"><a class="page-link" href="#">2</a></li>
+                    <li class="page-item"><a class="page-link" href="#">3</a></li>
+                    <li class="page-item">
+                        <a class="page-link" href="#">Next</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </section>
+
+    <!-- Why Adopt Section -->
+    <section class="py-5 bg-light">
+        <div class="container">
+            <h2 class="section-title text-center">Why Use PetSpace Finder?</h2>
+            <div class="row mt-5">
+                <div class="col-md-4 text-center mb-4">
+                    <div class="bg-primary rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 80px; height: 80px;">
+                        <i class="fas fa-shield-alt fa-2x text-white"></i>
+                    </div>
+                    <h4>Verified Listings</h4>
+                    <p>All pets and breeders are verified by our team to ensure authenticity and quality.</p>
+                </div>
+                <div class="col-md-4 text-center mb-4">
+                    <div class="bg-primary rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 80px; height: 80px;">
+                        <i class="fas fa-heart fa-2x text-white"></i>
+                    </div>
+                    <h4>Health Guarantee</h4>
+                    <p>Health checks and vaccinations are documented for every pet listed on our platform.</p>
+                </div>
+                <div class="col-md-4 text-center mb-4">
+                    <div class="bg-primary rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 80px; height: 80px;">
+                        <i class="fas fa-handshake fa-2x text-white"></i>
+                    </div>
+                    <h4>Support System</h4>
+                    <p>Get guidance from our pet experts throughout the adoption or purchasing process.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- footer -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 mb-4">
+                    <img src="asset/petspace_footer-removebg-preview.png" alt="PetSpace Logo" class="mb-3" height="40">
+                    <p class="mb-4">PetSpace is your premier online pet community, connecting pet lovers with trusted
+                        services and resources for all their pet care needs.</p>
+                    <div class="d-flex">
+                        <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+
+                <div class="col-lg-2 col-md-4 mb-4">
+                    <h5 class="mb-4">Quick Links</h5>
+                    <ul class="list-unstyled footer-links">
+                        <li class="mb-2"><a href="index.html">Home</a></li>
+                        <li class="mb-2"><a href="whyPetSpace.html">About Us</a></li>
+                        <li class="mb-2"><a href="#">Services</a></li>
+                        <li class="mb-2"><a href="#">Testimonials</a></li>
+                        <li class="mb-2"><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+
+                <div class="col-lg-2 col-md-4 mb-4">
+                    <h5 class="mb-4">Services</h5>
+                    <ul class="list-unstyled footer-links">
+                        <li class="mb-2"><a href="pet_finder.html">Pet Finder</a></li>
+                        <li class="mb-2"><a href="#">Find Vet</a></li>
+                        <li class="mb-2"><a href="#">Pet Training</a></li>
+                        <li class="mb-2"><a href="#">Pet Hostels</a></li>
+                        <li class="mb-2"><a href="#">Pet Events</a></li>
+                    </ul>
+                </div>
+
+                <div class="col-lg-4 col-md-4 mb-4">
+                    <h5 class="mb-4">Contact Us</h5>
+                    <ul class="list-unstyled footer-links">
+                        <li class="mb-3"><i class="fas fa-map-marker-alt me-2"></i> A26 Chinchwad, Pune, Maharashtra
+                            411033</li>
+                        <li class="mb-3"><i class="fas fa-phone me-2"></i> +91 77699 71133</li>
+                        <li class="mb-3"><i class="fas fa-envelope me-2"></i> durgeshksonar05@gmail.com</li>
+                        <li class="mb-3"><i class="fas fa-clock me-2"></i> Mon-Fri: 09:00 AM - 03:00 PM</li>
+                    </ul>
+                </div>
+            </div>
+
+            <hr class="my-4 bg-light">
+
+            <div class="row">
+                <div class="col-md-6 text-center text-md-start">
+                    <p class="mb-0">&copy; 2025 PetSpace. All rights reserved.</p>
+                </div>
+                <div class="col-md-6 text-center text-md-end">
+                    <a href="#" class="text-white me-3">Privacy Policy</a>
+                    <a href="#" class="text-white me-3">Terms of Service</a>
+                    <a href="#" class="text-white">Sitemap</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scroll to Top Button -->
+    <button id="scrollTopBtn" title="Go to top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q"
+        crossorigin="anonymous"></script>
+
+    <script>
+        // Scroll to top button functionality
+        const scrollTopBtn = document.getElementById("scrollTopBtn");
+
+        window.onscroll = function() {
+            if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
+                scrollTopBtn.classList.add('show');
+            } else {
+                scrollTopBtn.classList.remove('show');
+            }
+        };
+
+        scrollTopBtn.addEventListener("click", function() {
+            window.scrollTo({ top: 0, behavior: "smooth" });
+        });
+    </script>
+</body>
+
+</html>
