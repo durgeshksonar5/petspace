@@ -1,13 +1,8 @@
-Here’s a **perfect README.md file** template you can use for your GitHub project — your **Pet Community Website: “PetSpace”** 🐾.
-It’s clear, professional, and easy for anyone visiting your repo to understand what your project is about.
-
----
-
 ## 🐶 **PetSpace** – A Pet Community Website
 
 ### 🌐 **Live Demo**
 
-👉 [Visit PetSpace](#) *(Add your live link here if hosted)*
+👉 [Visit PetSpace](#) 
 
 ---
 
