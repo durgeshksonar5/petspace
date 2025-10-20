@@ -1,0 +1,857 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Find Vet/Doctor - PetSpace</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/x-icon" href="asset/android-chrome-512x512.png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .cm_b a:hover {
+            color: brown;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #333;
+            background-color: #f9f9f9;
+        }
+
+        .cm_b .nav-link {
+            color: var(--dark);
+            font-weight: 500;
+        }
+
+        .cm_b .nav-link:hover {
+            color: brown;
+        }
+
+        .cm_name {
+            color: var(--primary) !important;
+            font-weight: 600 !important;
+        }
+
+        .btn-outline-dark {
+            border-color: #2d3748;
+            color:  #2d3748;
+        }
+
+        .btn-outline-dark:hover {
+            background-color:  #2d3748;
+            color: white;
+        }
+
+        .vetfinder-hero {
+            background: linear-gradient(rgba(246, 246, 246, 0.696), rgba(206, 205, 205, 0.326)), url('asset/vet_banner.jpg');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 100px 0;
+            margin-bottom: 40px;
+            border-radius: 0 0 20px 20px;
+        }
+
+        .search-filters {
+            background-color: white;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .vet-card {
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s;
+            margin-bottom: 25px;
+            height: 100%;
+            border: none;
+        }
+
+        .vet-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .vet-img {
+            height: 250px;
+            object-fit: cover;
+            width: 100%;
+        }
+
+        .vet-feature {
+            display: flex;
+            align-items: center;
+            margin-bottom: 8px;
+        }
+
+        .vet-feature i {
+            color: var(--primary);
+            width: 24px;
+            margin-right: 10px;
+        }
+
+        .badge-vet {
+            background-color: var(--primary);
+            color: white;
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+        }
+
+        .badge-verified {
+            background-color: #28a745;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 0.7rem;
+        }
+
+        .section-title {
+            position: relative;
+            padding-bottom: 15px;
+            margin-bottom: 30px;
+        }
+
+        .section-title:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background-color: var(--primary);
+        }
+
+        .pagination {
+            justify-content: center;
+            margin-top: 40px;
+        }
+
+        .page-link {
+            color: var(--primary);
+            border: 1px solid #dee2e6;
+            padding: 0.5rem 0.75rem;
+        }
+
+        .page-link:hover {
+            color: var(--primary);
+            background-color: #f8f9fa;
+        }
+
+        .page-item.active .page-link {
+            background-color: var(--primary);
+            border-color: var(--primary);
+        }
+
+        footer {
+            background-color: #2d3748;
+            color: white;
+            padding: 60px 0 30px;
+            margin-top: 60px;
+        }
+
+        .footer-links a {
+            color: #ddd;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: white;
+        }
+
+        .social-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.1);
+            color: white;
+            margin-right: 10px;
+            transition: all 0.3s;
+        }
+
+        .social-icon:hover {
+            background-color: var(--primary);
+            transform: translateY(-3px);
+        }
+
+        #scrollTopBtn.show {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        #scrollTopBtn:hover {
+            background: #0b5ed7;
+            transform: translateY(-3px);
+        }
+
+        .vet-rating {
+            color: #ffc107;
+        }
+
+        .specialty-info {
+            background-color: #f8f9fa;
+            border-radius: 10px;
+            padding: 15px;
+            margin-top: 15px;
+        }
+        
+        
+        .navbar-toggler {
+            border: none;
+        }
+        
+        .navbar-toggler:focus {
+            box-shadow: none;
+        }
+
+        .pulse-effect {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            background: transparent;
+            box-shadow: 0 0 0 0 rgba(13, 110, 253, 0.7);
+        }
+        
+        .arrow-icon {
+            position: relative;
+            z-index: 2;
+        }
+        
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 0 0 0 rgba(13, 110, 253, 0.7);
+            }
+            70% {
+                box-shadow: 0 0 0 10px rgba(13, 110, 253, 0);
+            }
+            100% {
+                box-shadow: 0 0 0 0 rgba(13, 110, 253, 0);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- navbar -->
+    <nav class="navbar navbar-expand-lg bg-white sticky-top shadow-sm">
+        <div class="container-fluid fs-6">
+            <a class="navbar-brand" href="index.html"> 
+                <img src="asset/petspace_crop-removebg.png" alt="PetSpace Logo" height="50">
+            </a>
+            
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" 
+                    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0 fw-medium">
+                    <li class="nav-item cm_b">
+                        <a class="nav-link" aria-current="page" href="index.html">Home</a>
+                    </li>
+
+                    <li class="nav-item cm_b">
+                        <a class="nav-link" href="whyPetSpace.html">Why PetSpace</a>
+                    </li>
+
+                    <li class="nav-item dropdown cm_b">
+                        <a class="nav-link dropdown-toggle active" href="#" role="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                            Services
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="pet_finder.html">Pet Finder</a></li>
+                            <li><a class="dropdown-item" href="find_stud.html">Find Stud</a></li>
+                            <li><a class="dropdown-item active" href="find_vet.html">Find Vet/Doctor</a></li>
+                            <li><a class="dropdown-item" href="#">Find Trainer</a></li>
+                            <li><a class="dropdown-item" href="#">Find Petshop</a></li>
+                            <li><a class="dropdown-item" href="#">Find Hostel</a></li>
+                            <li><a class="dropdown-item" href="#">Find Shelter</a></li>
+                            <li><a class="dropdown-item" href="#">Pet Events</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="nav-item cm_b">
+                        <a class="nav-link" href="contact.html">Contact Us</a>
+                    </li>
+                </ul>
+
+                <ul class="navbar-nav me-3 mb-2 mb-lg-0 fw-medium">
+                    <li class="nav-item ps-2 cm_b">
+                        <a class="nav-link cm_name" href="#"> 
+                            <i class="fa-solid fa-location-dot"></i> Pune
+                        </a>
+                    </li>
+                </ul>
+
+                <div class="d-flex shadow-sm rounded-3" role="search" style="height: 40px;">
+                    <a href="login.html" class="btn btn-outline-dark fs-6"> 
+                        <b><i class="fa-regular fa-user"></i> Hello, Login Here...</b> 
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="vetfinder-hero">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 mx-auto text-center">
+                    <h1 class="display-4 fw-bold mb-3">Find Trusted Veterinary Care</h1>
+                    <p class="lead mb-5">Connect with verified, experienced veterinarians and pet doctors. Filter by specialty, location, availability and more to find the perfect healthcare provider for your pet.</p>
+                </div>
+            </div>
+
+            <!-- Search Filters -->
+            <div class="row">
+                <div class="col-lg-10 mx-auto">
+                    <div class="search-filters">
+                        <form>
+                            <div class="row g-3">
+                                <div class="col-md-4">
+                                    <label class="form-label">Specialty</label>
+                                    <select class="form-select">
+                                        <option selected>All Specialties</option>
+                                        <option>General Practice</option>
+                                        <option>Surgery</option>
+                                        <option>Dermatology</option>
+                                        <option>Dentistry</option>
+                                        <option>Emergency Care</option>
+                                        <option>Internal Medicine</option>
+                                        <option>Ophthalmology</option>
+                                        <option>Cardiology</option>
+                                        <option>Orthopedics</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-4">
+                                    <label class="form-label">Location</label>
+                                    <select class="form-select">
+                                        <option selected>Pune & Nearby</option>
+                                        <option>Mumbai</option>
+                                        <option>Delhi</option>
+                                        <option>Bangalore</option>
+                                        <option>Hyderabad</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-4">
+                                    <label class="form-label">Experience</label>
+                                    <select class="form-select">
+                                        <option selected>Any Experience</option>
+                                        <option>1-5 years</option>
+                                        <option>5-10 years</option>
+                                        <option>10-15 years</option>
+                                        <option>15+ years</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-4">
+                                    <label class="form-label">Availability</label>
+                                    <select class="form-select">
+                                        <option selected>Any Time</option>
+                                        <option>24/7 Emergency</option>
+                                        <option>Weekdays Only</option>
+                                        <option>Weekends Available</option>
+                                        <option>Same Day Appointments</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-4">
+                                    <label class="form-label">Services</label>
+                                    <select class="form-select">
+                                        <option selected>All Services</option>
+                                        <option>Vaccinations</option>
+                                        <option>Surgery</option>
+                                        <option>Dental Care</option>
+                                        <option>Grooming</option>
+                                        <option>Diagnostics</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-4">
+                                    <label class="form-label">Languages</label>
+                                    <select class="form-select">
+                                        <option selected>Any Language</option>
+                                        <option>English</option>
+                                        <option>Hindi</option>
+                                        <option>Marathi</option>
+                                        <option>Multiple Languages</option>
+                                    </select>
+                                </div>
+                                <div class="col-12 text-center mt-4">
+                                    <button type="button" class="btn btn-dark px-5 py-2 fs-5">
+                                        <i class="fas fa-search me-2"></i> Find Vets
+                                    </button>
+                                    <button type="reset" class="btn btn-outline-dark px-5 py-2 fs-5 ms-2">
+                                        Reset Filters
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Vets Listing -->
+    <section class="py-5">
+        <div class="container">
+            <div class="d-flex justify-content-between align-items-center mb-5">
+                <h2 class="section-title">Available Veterinarians <span class="badge bg-dark">36</span></h2>
+                <div>
+                    <select class="form-select w-auto d-inline-block">
+                        <option selected>Sort by: Rating</option>
+                        <option>Sort by: Experience</option>
+                        <option>Sort by: Distance</option>
+                        <option>Sort by: Availability</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="row">
+                <!-- Vet 1 -->
+                <div class="col-md-6 col-lg-4 mb-4">
+                    <div class="vet-card">
+                        <img src="https://images.unsplash.com/photo-1582750433449-648ed127bb54?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80"
+                            class="vet-img" alt="Dr. Sharma">
+                        <div class="p-4">
+                            <div class="d-flex justify-content-between align-items-center mb-3">
+                                <h4 class="mb-0">Dr. Rajesh Sharma</h4>
+                                <div>
+                                    <span class="badge-vet">Verified</span>
+                                    <span class="badge-verified ms-1"><i class="fas fa-check"></i></span>
+                                </div>
+                            </div>
+                            <div class="vet-feature">
+                                <i class="fas fa-stethoscope"></i>
+                                <span>General Practice & Surgery</span>
+                            </div>
+                            <div class="vet-feature">
+                                <i class="fas fa-briefcase"></i>
+                                <span>12 years experience</span>
+                            </div>
+                            <div class="vet-feature">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <span>Koregaon Park, Pune</span>
+                            </div>
+                            <div class="vet-feature">
+                                <i class="fas fa-star vet-rating"></i>
+                                <span>4.9 (247 reviews)</span>
+                            </div>
+                            <div class="specialty-info">
+                                <h6 class="mb-2">Specialties & Services</h6>
+                                <p class="mb-1"><small>Vaccinations, Surgery, Dental Care</small></p>
+                                <p class="mb-1"><small>Languages: English, Hindi, Marathi</small></p>
+                            </div>
+                            <div class="d-flex justify-content-between align-items-center mt-3">
+                                <a href="#" class="btn btn-outline-danger">Book Appointment</a>
+                                <span class="text-danger fw-bold">₹800</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Vet 2 -->
+                <div class="col-md-6 col-lg-4 mb-4">
+                    <div class="vet-card">
+                        <img src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
+                            class="vet-img" alt="Dr. Patel">
+                        <div class="p-4">
+                            <div class="d-flex justify-content-between align-items-center mb-3">
+                                <h4 class="mb-0">Dr. Priya Patel</h4>
+                                <div>
+                                    <span class="badge-vet">Verified</span>
+                                    <span class="badge-verified ms-1"><i class="fas fa-check"></i></span>
+                                </div>
+                            </div>
+                            <div class="vet-feature">
+                                <i class="fas fa-stethoscope"></i>
+                                <span>Dermatology & Internal Medicine</span>
+                            </div>
+                            <div class="vet-feature">
+                                <i class="fas fa-briefcase"></i>
+                                <span>8 years experience</span>
+                            </div>
+                            <div class="vet-feature">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <span>Kothrud, Pune</span>
+                            </div>
+                            <div class="vet-feature">
+                                <i class="fas fa-star vet-rating"></i>
+                                <span>4.8 (189 reviews)</span>
+                            </div>
+                            <div class="specialty-info">
+                                <h6 class="mb-2">Specialties & Services</h6>
+                                <p class="mb-1"><small>Skin Conditions, Allergies, Diagnostics</small></p>
+                                <p class="mb-1"><small>Languages: English, Hindi, Gujarati</small></p>
+                            </div>
+                            <div class="d-flex justify-content-between align-items-center mt-3">
+                                <a href="#" class="btn btn-outline-danger">Book Appointment</a>
+                                <span class="text-danger fw-bold">₹700</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Vet 3 -->
+                <div class="col-md-6 col-lg-4 mb-4">
+                    <div class="vet-card">
+                        <img src="asset/vet_dr.jpg"
+                            class="vet-img" alt="Dr. Kumar">
+                        <div class="p-4">
+                            <div class="d-flex justify-content-between align-items-center mb-3">
+                                <h4 class="mb-0">Dr. Amit Kumar</h4>
+                                <div>
+                                    <span class="badge-vet">Verified</span>
+                                    <span class="badge-verified ms-1"><i class="fas fa-check"></i></span>
+                                </div>
+                            </div>
+                            <div class="vet-feature">
+                                <i class="fas fa-stethoscope"></i>
+                                <span>Emergency & Critical Care</span>
+                            </div>
+                            <div class="vet-feature">
+                                <i class="fas fa-briefcase"></i>
+                                <span>15 years experience</span>
+                            </div>
+                            <div class="vet-feature">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <span>Hadapsar, Pune</span>
+                            </div>
+                            <div class="vet-feature">
+                                <i class="fas fa-star vet-rating"></i>
+                                <span>4.9 (312 reviews)</span>
+                            </div>
+                            <div class="specialty-info">
+                                <h6 class="mb-2">Specialties & Services</h6>
+                                <p class="mb-1"><small>24/7 Emergency, Surgery, ICU</small></p>
+                                <p class="mb-1"><small>Languages: English, Hindi</small></p>
+                            </div>
+                            <div class="d-flex justify-content-between align-items-center mt-3">
+                                <a href="#" class="btn btn-outline-danger">Book Appointment</a>
+                                <span class="text-danger fw-bold">₹1,200</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Vet 4 -->
+                <div class="col-md-6 col-lg-4 mb-4">
+                    <div class="vet-card">
+                        <img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
+                            class="vet-img" alt="Dr. Joshi">
+                        <div class="p-4">
+                            <div class="d-flex justify-content-between align-items-center mb-3">
+                                <h4 class="mb-0">Dr. Anjali Joshi</h4>
+                                <div>
+                                    <span class="badge-vet">Verified</span>
+                                    <span class="badge-verified ms-1"><i class="fas fa-check"></i></span>
+                                </div>
+                            </div>
+                            <div class="vet-feature">
+                                <i class="fas fa-stethoscope"></i>
+                                <span>Dentistry & Oral Surgery</span>
+                            </div>
+                            <div class="vet-feature">
+                                <i class="fas fa-briefcase"></i>
+                                <span>10 years experience</span>
+                            </div>
+                            <div class="vet-feature">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <span>Baner, Pune</span>
+                            </div>
+                            <div class="vet-feature">
+                                <i class="fas fa-star vet-rating"></i>
+                                <span>4.7 (156 reviews)</span>
+                            </div>
+                            <div class="specialty-info">
+                                <h6 class="mb-2">Specialties & Services</h6>
+                                <p class="mb-1"><small>Dental Cleaning, Extractions, Oral Surgery</small></p>
+                                <p class="mb-1"><small>Languages: English, Hindi, Marathi</small></p>
+                            </div>
+                            <div class="d-flex justify-content-between align-items-center mt-3">
+                                <a href="#" class="btn btn-outline-danger">Book Appointment</a>
+                                <span class="text-danger fw-bold">₹900</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Vet 5 -->
+                <div class="col-md-6 col-lg-4 mb-4">
+                    <div class="vet-card">
+                        <img src="asset/vet_dr1.jpg"
+                            class="vet-img" alt="Dr. Singh">
+                        <div class="p-4">
+                            <div class="d-flex justify-content-between align-items-center mb-3">
+                                <h4 class="mb-0">Dr. Vikram Singh</h4>
+                                <div>
+                                    <span class="badge-vet">Verified</span>
+                                    <span class="badge-verified ms-1"><i class="fas fa-check"></i></span>
+                                </div>
+                            </div>
+                            <div class="vet-feature">
+                                <i class="fas fa-stethoscope"></i>
+                                <span>Orthopedics & Surgery</span>
+                            </div>
+                            <div class="vet-feature">
+                                <i class="fas fa-briefcase"></i>
+                                <span>18 years experience</span>
+                            </div>
+                            <div class="vet-feature">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <span>Wakad, Pune</span>
+                            </div>
+                            <div class="vet-feature">
+                                <i class="fas fa-star vet-rating"></i>
+                                <span>4.9 (278 reviews)</span>
+                            </div>
+                            <div class="specialty-info">
+                                <h6 class="mb-2">Specialties & Services</h6>
+                                <p class="mb-1"><small>Bone Fractures, Joint Surgery, Rehabilitation</small></p>
+                                <p class="mb-1"><small>Languages: English, Hindi, Punjabi</small></p>
+                            </div>
+                            <div class="d-flex justify-content-between align-items-center mt-3">
+                                <a href="#" class="btn btn-outline-danger">Book Appointment</a>
+                                <span class="text-danger fw-bold">₹1,500</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Vet 6 -->
+                <div class="col-md-6 col-lg-4 mb-4">
+                    <div class="vet-card">
+                        <img src="https://images.unsplash.com/photo-1551601651-2a8555f1a136?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1332&q=80"
+                            class="vet-img" alt="Dr. Mehta">
+                        <div class="p-4">
+                            <div class="d-flex justify-content-between align-items-center mb-3">
+                                <h4 class="mb-0">Dr. Neha Mehta</h4>
+                                <div>
+                                    <span class="badge-vet">Verified</span>
+                                    <span class="badge-verified ms-1"><i class="fas fa-check"></i></span>
+                                </div>
+                            </div>
+                            <div class="vet-feature">
+                                <i class="fas fa-stethoscope"></i>
+                                <span>Ophthalmology</span>
+                            </div>
+                            <div class="vet-feature">
+                                <i class="fas fa-briefcase"></i>
+                                <span>7 years experience</span>
+                            </div>
+                            <div class="vet-feature">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <span>Hinjewadi, Pune</span>
+                            </div>
+                            <div class="vet-feature">
+                                <i class="fas fa-star vet-rating"></i>
+                                <span>4.6 (134 reviews)</span>
+                            </div>
+                            <div class="specialty-info">
+                                <h6 class="mb-2">Specialties & Services</h6>
+                                <p class="mb-1"><small>Eye Examinations, Cataract Surgery, Vision Care</small></p>
+                                <p class="mb-1"><small>Languages: English, Hindi, Marathi</small></p>
+                            </div>
+                            <div class="d-flex justify-content-between align-items-center mt-3">
+                                <a href="#" class="btn btn-outline-danger">Book Appointment</a>
+                                <span class="text-danger fw-bold">₹1,000</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Pagination -->
+            <nav aria-label="Page navigation">
+                <ul class="pagination">
+                    <li class="page-item disabled">
+                        <a class="page-link" href="#" tabindex="-1">Previous</a>
+                    </li>
+                    <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                    <li class="page-item"><a class="page-link" href="#">2</a></li>
+                    <li class="page-item"><a class="page-link" href="#">3</a></li>
+                    <li class="page-item">
+                        <a class="page-link" href="#">Next</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </section>
+
+    <!-- Why Use Our Vet Service Section -->
+    <section class="py-5 bg-light">
+        <div class="container">
+            <h2 class="section-title text-center">Why Use PetSpace Vet Finder?</h2>
+            <div class="row mt-5">
+                <div class="col-md-4 text-center mb-4">
+                    <div class="bg-primary rounded-circle d-inline-flex align-items-center justify-content-center mb-3"
+                        style="width: 80px; height: 80px;">
+                        <i class="fas fa-shield-alt fa-2x text-white"></i>
+                    </div>
+                    <h4>Verified Professionals</h4>
+                    <p>All veterinarians are verified with proper credentials and licenses for your pet's safety.</p>
+                </div>
+                <div class="col-md-4 text-center mb-4">
+                    <div class="bg-primary rounded-circle d-inline-flex align-items-center justify-content-center mb-3"
+                        style="width: 80px; height: 80px;">
+                        <i class="fas fa-calendar-check fa-2x text-white"></i>
+                    </div>
+                    <h4>Easy Booking</h4>
+                    <p>Book appointments directly through our platform with real-time availability.</p>
+                </div>
+                <div class="col-md-4 text-center mb-4">
+                    <div class="bg-primary rounded-circle d-inline-flex align-items-center justify-content-center mb-3"
+                        style="width: 80px; height: 80px;">
+                        <i class="fas fa-comments fa-2x text-white"></i>
+                    </div>
+                    <h4>Transparent Reviews</h4>
+                    <p>Read genuine reviews from other pet owners to make informed decisions.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- footer -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 mb-4">
+                    <img src="asset/petspace_footer-removebg-preview.png" alt="PetSpace Logo" class="mb-3" height="40">
+                    <p class="mb-4">PetSpace is your premier online pet community, connecting pet lovers with trusted
+                        services and resources for all their pet care needs.</p>
+                    <div class="d-flex">
+                        <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+
+                <div class="col-lg-2 col-md-4 mb-4">
+                    <h5 class="mb-4">Quick Links</h5>
+                    <ul class="list-unstyled footer-links">
+                        <li class="mb-2"><a href="index.html">Home</a></li>
+                        <li class="mb-2"><a href="whyPetSpace.html">About Us</a></li>
+                        <li class="mb-2"><a href="#">Services</a></li>
+                        <li class="mb-2"><a href="#">Testimonials</a></li>
+                        <li class="mb-2"><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+
+                <div class="col-lg-2 col-md-4 mb-4">
+                    <h5 class="mb-4">Services</h5>
+                    <ul class="list-unstyled footer-links">
+                        <li class="mb-2"><a href="pet_finder.html">Pet Finder</a></li>
+                        <li class="mb-2"><a href="find_stud.html">Find Stud</a></li>
+                        <li class="mb-2"><a href="find_vet.html">Find Vet</a></li>
+                        <li class="mb-2"><a href="#">Pet Training</a></li>
+                        <li class="mb-2"><a href="#">Pet Events</a></li>
+                    </ul>
+                </div>
+
+                <div class="col-lg-4 col-md-4 mb-4">
+                    <h5 class="mb-4">Contact Us</h5>
+                    <ul class="list-unstyled footer-links">
+                        <li class="mb-3"><i class="fas fa-map-marker-alt me-2"></i> A26 Chinchwad, Pune, Maharashtra
+                            411033</li>
+                        <li class="mb-3"><i class="fas fa-phone me-2"></i> +91 77699 71133</li>
+                        <li class="mb-3"><i class="fas fa-envelope me-2"></i> durgeshksonar05@gmail.com</li>
+                        <li class="mb-3"><i class="fas fa-clock me-2"></i> Mon-Fri: 09:00 AM - 03:00 PM</li>
+                    </ul>
+                </div>
+            </div>
+
+            <hr class="my-4 bg-light">
+
+            <div class="row">
+                <div class="col-md-6 text-center text-md-start">
+                    <p class="mb-0">&copy; 2025 PetSpace. All rights reserved.</p>
+                </div>
+                <div class="col-md-6 text-center text-md-end">
+                    <a href="#" class="text-white me-3">Privacy Policy</a>
+                    <a href="#" class="text-white me-3">Terms of Service</a>
+                    <a href="#" class="text-white">Sitemap</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+  
+    <!-- Scroll to Top Button -->
+    <button id="scrollTopBtn" title="Go to top">
+        <svg class="progress-circle" viewBox="0 0 36 36">
+            <circle class="progress-circle-bg" cx="18" cy="18" r="16"></circle>
+            <circle class="progress-circle-fill" cx="18" cy="18" r="16" stroke-dasharray="100 100"
+                stroke-dashoffset="100"></circle>
+        </svg>
+        <div class="pulse-effect"></div>
+        <i class="fas fa-arrow-up arrow-icon"></i>
+    </button>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q"
+        crossorigin="anonymous"></script>
+
+    <!-- Scroll Button Script -->
+    <script>
+        const scrollTopBtn = document.getElementById("scrollTopBtn");
+        const progressFill = document.querySelector('.progress-circle-fill');
+        const pulseEffect = document.querySelector('.pulse-effect');
+
+
+
+        // Calculate scroll percentage
+        function getScrollPercentage() {
+            const scrollPosition = document.documentElement.scrollTop || document.body.scrollTop;
+            const windowHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            return (scrollPosition / windowHeight) * 100;
+        }
+
+        // Update progress circle
+        function updateProgressCircle() {
+            const scrollPercent = getScrollPercentage();
+            const offset = 100 - scrollPercent;
+            progressFill.style.strokeDashoffset = offset;
+        }
+
+        window.onscroll = function () {
+            if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
+                scrollTopBtn.classList.add('show');
+                updateProgressCircle();
+            } else {
+                scrollTopBtn.classList.remove('show');
+            }
+        };
+
+        scrollTopBtn.addEventListener("click", function () {
+            window.scrollTo({ top: 0, behavior: "smooth" });
+
+            // Add click animation
+            this.classList.add('clicked');
+            setTimeout(() => {
+                this.classList.remove('clicked');
+            }, 300);
+        });
+
+        // Add pulse animation on hover
+        scrollTopBtn.addEventListener('mouseenter', () => {
+            pulseEffect.style.animation = 'pulse 2s infinite';
+        });
+
+        scrollTopBtn.addEventListener('mouseleave', () => {
+            pulseEffect.style.animation = 'none';
+        });
+    </script>
+
+</body>
+
+</html>

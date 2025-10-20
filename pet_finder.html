@@ -11,46 +11,64 @@
         integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        :root {
-            --primary: #0c2f5c;
-            --secondary: #ff6b6b;
-            --light: #f8f9fa;
-            --dark: #343a40;
+
+
+        .cm_b a:hover {
+            color: brown;
         }
-        
+
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             color: #333;
-            background-color: #f9f9f9;
+            background-color: var(--light);
         }
-        
-        
+
         .cm_b .nav-link {
             color: var(--dark);
             font-weight: 500;
         }
-        
+
         .cm_b .nav-link:hover {
-            color: var(--primary);
+            color: brown;
         }
-        
+
         .cm_name {
             color: var(--primary) !important;
             font-weight: 600 !important;
         }
-        
+
         .btn-outline-dark {
+            border-color:  #2d3748;
+            color:  #2d3748;
+        }
+
+        .btn-outline-dark:hover {
+            background-color:  #2d3748;
+            color: white;
+        }
+
+        .btn-primary {
+            background-color: var(--primary);
+            border-color: var(--primary);
+        }
+
+        .btn-primary:hover {
+            background-color: #3a5983;
+            border-color: #3a5983;
+        }
+
+        .btn-outline-primary {
             border-color: var(--primary);
             color: var(--primary);
         }
-        
-        .btn-outline-dark:hover {
+
+        .btn-outline-primary:hover {
             background-color: var(--primary);
             color: white;
         }
-        
+
         .petfinder-hero {
-            background: linear-gradient(rgba(12, 47, 92, 0.8), rgba(12, 47, 92, 0.8)), url('https://images.unsplash.com/photo-1543466835-00a7907e9de1?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1074&q=80');
+            background: linear-gradient(rgba(246, 246, 246, 0.696), rgba(206, 205, 205, 0.326)), url('asset/hero_bannr.jpg');
             background-size: cover;
             background-position: center;
             color: white;
@@ -58,14 +76,14 @@
             margin-bottom: 40px;
             border-radius: 0 0 20px 20px;
         }
-        
+
         .search-filters {
             background-color: white;
             padding: 25px;
             border-radius: 15px;
             box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
         }
-        
+
         .pet-card {
             border-radius: 15px;
             overflow: hidden;
@@ -73,30 +91,32 @@
             transition: all 0.3s;
             margin-bottom: 25px;
             height: 100%;
+            border: none;
         }
-        
+
         .pet-card:hover {
             transform: translateY(-5px);
             box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
         }
-        
+
         .pet-img {
             height: 250px;
             object-fit: cover;
+            width: 100%;
         }
-        
+
         .pet-feature {
             display: flex;
             align-items: center;
             margin-bottom: 8px;
         }
-        
+
         .pet-feature i {
             color: var(--primary);
             width: 24px;
             margin-right: 10px;
         }
-        
+
         .badge-pet {
             background-color: var(--primary);
             color: white;
@@ -104,13 +124,21 @@
             border-radius: 20px;
             font-size: 0.8rem;
         }
-        
+
+        .badge-adoption {
+            background-color: var(--secondary);
+            color: white;
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+        }
+
         .section-title {
             position: relative;
             padding-bottom: 15px;
             margin-bottom: 30px;
         }
-        
+
         .section-title:after {
             content: '';
             position: absolute;
@@ -120,45 +148,45 @@
             height: 3px;
             background-color: var(--secondary);
         }
-        
+
         .pagination {
             justify-content: center;
             margin-top: 40px;
         }
-        
+
         .page-link {
             color: var(--primary);
             border: 1px solid #dee2e6;
             padding: 0.5rem 0.75rem;
         }
-        
+
         .page-link:hover {
             color: var(--primary);
             background-color: #f8f9fa;
         }
-        
+
         .page-item.active .page-link {
             background-color: var(--primary);
             border-color: var(--primary);
         }
-        
+
         footer {
-            background-color: var(--dark);
+            background-color: #2d3748;
             color: white;
             padding: 60px 0 30px;
             margin-top: 60px;
         }
-        
+
         .footer-links a {
             color: #ddd;
             text-decoration: none;
             transition: color 0.3s;
         }
-        
+
         .footer-links a:hover {
             color: white;
         }
-        
+
         .social-icon {
             display: inline-flex;
             align-items: center;
@@ -171,57 +199,32 @@
             margin-right: 10px;
             transition: all 0.3s;
         }
-        
+
         .social-icon:hover {
             background-color: var(--primary);
             transform: translateY(-3px);
         }
-        
-        /* Scroll to Top Button */
-        #scrollTopBtn {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            background: var(--primary);
-            color: white;
-            border: none;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            opacity: 0;
-            visibility: hidden;
-            transition: all 0.3s;
-            z-index: 1000;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-        }
-        
-        #scrollTopBtn.show {
-            opacity: 1;
-            visibility: visible;
-        }
-        
-        #scrollTopBtn:hover {
-            background: var(--secondary);
-            transform: translateY(-3px);
-        }
+
+
     </style>
 </head>
 
 <body>
     <!-- navbar -->
-    <nav class="navbar navbar-expand-lg bg-white sticky-top">
+    <nav class="navbar navbar-expand-lg bg-white sticky-top shadow-sm">
         <div class="container-fluid fs-6">
-            <a class="navbar-brand" href="#"> <img src="asset/petspace_crop-removebg.png" alt="" height="50px"></a>
+            <a class="navbar-brand" href="#"> <img src="asset/petspace_crop-removebg.png" alt="PetSpace" height="50px"></a>
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
 
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0 fw-medium">
 
                     <li class="nav-item cm_b">
-                        <a class="nav-link active" aria-current="page" href="index.html">Home</a>
+                        <a class="nav-link" aria-current="page" href="index.html">Home</a>
                     </li>
 
                     <li class="nav-item cm_b">
@@ -229,14 +232,14 @@
                     </li>
 
                     <li class="nav-item dropdown cm_b">
-                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                        <a class="nav-link active dropdown-toggle active" href="#" role="button" data-bs-toggle="dropdown"
                             aria-expanded="false">
                             Services
                         </a>
                         <ul class="dropdown-menu">
                             <li><a class="dropdown-item" href="pet_finder.html">Pet Finder</a></li>
-                            <li><a class="dropdown-item" href="#">Find Stud</a></li>
-                            <li><a class="dropdown-item" href="#">Find vet/ Doctor</a></li>
+                            <li><a class="dropdown-item" href="find_stud.html">Find Stud</a></li>
+                            <li><a class="dropdown-item" href="find_vet.html">Find vet/ Doctor</a></li>
                             <li><a class="dropdown-item" href="#">Find Trainer</a></li>
                             <li><a class="dropdown-item" href="#">Find Petshop</a></li>
                             <li><a class="dropdown-item" href="#">Find Hostel</a></li>
@@ -273,79 +276,81 @@
             <div class="row">
                 <div class="col-lg-8 mx-auto text-center">
                     <h1 class="display-4 fw-bold mb-3">Find Your Perfect Pet Companion</h1>
-                    <p class="lead mb-5">Browse through hundreds of pets waiting for their forever homes. Filter by breed, age, location and more to find your ideal match.</p>
+                    <p class="lead mb-5">Browse through hundreds of pets waiting for their forever homes. Filter by
+                        breed, age, location and more to find your ideal match.</p>
                 </div>
             </div>
-            
+
             <!-- Search Filters -->
             <div class="row">
                 <div class="col-lg-10 mx-auto">
                     <div class="search-filters">
-                        <form>
+                        <form id="petSearchForm">
                             <div class="row g-3">
                                 <div class="col-md-4">
                                     <label class="form-label">Pet Type</label>
-                                    <select class="form-select">
-                                        <option selected>All Pets</option>
-                                        <option>Dogs</option>
-                                        <option>Cats</option>
-                                        <option>Birds</option>
-                                        <option>Fish</option>
-                                        <option>Small Animals</option>
+                                    <select class="form-select" id="petType">
+                                        <option value="" selected>All Pets</option>
+                                        <option value="dog">Dogs</option>
+                                        <option value="cat">Cats</option>
+                                        <option value="bird">Birds</option>
+                                        <option value="fish">Fish</option>
+                                        <option value="small">Small Animals</option>
                                     </select>
                                 </div>
                                 <div class="col-md-4">
                                     <label class="form-label">Breed</label>
-                                    <select class="form-select">
-                                        <option selected>Any Breed</option>
-                                        <option>Labrador Retriever</option>
-                                        <option>German Shepherd</option>
-                                        <option>Golden Retriever</option>
-                                        <option>Bulldog</option>
-                                        <option>Beagle</option>
-                                        <option>Poodle</option>
+                                    <select class="form-select" id="breed">
+                                        <option value="" selected>Any Breed</option>
+                                        <option value="labrador">Labrador Retriever</option>
+                                        <option value="german">German Shepherd</option>
+                                        <option value="golden">Golden Retriever</option>
+                                        <option value="bulldog">Bulldog</option>
+                                        <option value="beagle">Beagle</option>
+                                        <option value="poodle">Poodle</option>
                                     </select>
                                 </div>
                                 <div class="col-md-4">
                                     <label class="form-label">Age</label>
-                                    <select class="form-select">
-                                        <option selected>Any Age</option>
-                                        <option>Puppy/Kitten (0-1 yr)</option>
-                                        <option>Young (1-3 yrs)</option>
-                                        <option>Adult (3-8 yrs)</option>
-                                        <option>Senior (8+ yrs)</option>
+                                    <select class="form-select" id="age">
+                                        <option value="" selected>Any Age</option>
+                                        <option value="puppy">Puppy/Kitten (0-1 yr)</option>
+                                        <option value="young">Young (1-3 yrs)</option>
+                                        <option value="adult">Adult (3-8 yrs)</option>
+                                        <option value="senior">Senior (8+ yrs)</option>
                                     </select>
                                 </div>
                                 <div class="col-md-4">
                                     <label class="form-label">Gender</label>
-                                    <select class="form-select">
-                                        <option selected>Any Gender</option>
-                                        <option>Male</option>
-                                        <option>Female</option>
+                                    <select class="form-select" id="gender">
+                                        <option value="" selected>Any Gender</option>
+                                        <option value="male">Male</option>
+                                        <option value="female">Female</option>
                                     </select>
                                 </div>
                                 <div class="col-md-4">
                                     <label class="form-label">Location</label>
-                                    <select class="form-select">
-                                        <option selected>Pune & Nearby</option>
-                                        <option>Mumbai</option>
-                                        <option>Delhi</option>
-                                        <option>Bangalore</option>
-                                        <option>Hyderabad</option>
+                                    <select class="form-select" id="location">
+                                        <option value="" selected>Pune & Nearby</option>
+                                        <option value="mumbai">Mumbai</option>
+                                        <option value="delhi">Delhi</option>
+                                        <option value="bangalore">Bangalore</option>
+                                        <option value="hyderabad">Hyderabad</option>
                                     </select>
                                 </div>
                                 <div class="col-md-4">
                                     <label class="form-label">Size</label>
-                                    <select class="form-select">
-                                        <option selected>Any Size</option>
-                                        <option>Small</option>
-                                        <option>Medium</option>
-                                        <option>Large</option>
+                                    <select class="form-select" id="size">
+                                        <option value="" selected>Any Size</option>
+                                        <option value="small">Small</option>
+                                        <option value="medium">Medium</option>
+                                        <option value="large">Large</option>
                                     </select>
                                 </div>
                                 <div class="col-12 text-center mt-4">
-                                    <button class="btn btn-primary px-5 py-2 fs-5"><i class="fas fa-search me-2"></i> Find Pets</button>
-                                    <button class="btn btn-outline-primary px-5 py-2 fs-5 ms-2">Reset Filters</button>
+                                    <button type="submit" class="btn btn-primary px-5 py-2 fs-5"><i class="fas fa-search me-2"></i>
+                                        Find Pets</button>
+                                    <button type="reset" class="btn btn-outline-primary px-5 py-2 fs-5 ms-2">Reset Filters</button>
                                 </div>
                             </div>
                         </form>
@@ -359,22 +364,23 @@
     <section class="py-5">
         <div class="container">
             <div class="d-flex justify-content-between align-items-center mb-5">
-                <h2 class="section-title">Available Pets <span class="badge bg-primary">124</span></h2>
+                <h2 class="section-title">Available Pets <span class="badge bg-primary" id="petCount">124</span></h2>
                 <div>
-                    <select class="form-select w-auto d-inline-block">
-                        <option selected>Sort by: Newest</option>
-                        <option>Sort by: Oldest</option>
-                        <option>Sort by: Name A-Z</option>
-                        <option>Sort by: Name Z-A</option>
+                    <select class="form-select w-auto d-inline-block" id="sortBy">
+                        <option value="newest" selected>Sort by: Newest</option>
+                        <option value="oldest">Sort by: Oldest</option>
+                        <option value="name-asc">Sort by: Name A-Z</option>
+                        <option value="name-desc">Sort by: Name Z-A</option>
                     </select>
                 </div>
             </div>
-            
-            <div class="row">
+
+            <div class="row" id="petsContainer">
                 <!-- Pet 1 -->
-                <div class="col-md-6 col-lg-4">
+                <div class="col-md-6 col-lg-4 mb-4">
                     <div class="pet-card">
-                        <img src="https://images.unsplash.com/photo-1554692918-08fa0fdc9db3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80" class="pet-img w-100" alt="Golden Retriever">
+                        <img src="https://images.unsplash.com/photo-1554692918-08fa0fdc9db3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
+                            class="pet-img" alt="Golden Retriever">
                         <div class="p-4">
                             <div class="d-flex justify-content-between align-items-center mb-3">
                                 <h4 class="mb-0">Max</h4>
@@ -392,7 +398,8 @@
                                 <i class="fas fa-map-marker-alt"></i>
                                 <span>Pune, Maharashtra</span>
                             </div>
-                            <p class="mt-3">Friendly and playful. Loves long walks and cuddles. Vaccinated and neutered.</p>
+                            <p class="mt-3">Friendly and playful. Loves long walks and cuddles. Vaccinated and neutered.
+                            </p>
                             <div class="d-flex justify-content-between align-items-center">
                                 <a href="#" class="btn btn-outline-primary">View Details</a>
                                 <span class="text-primary fw-bold">₹5,000</span>
@@ -400,11 +407,12 @@
                         </div>
                     </div>
                 </div>
-                
+
                 <!-- Pet 2 -->
-                <div class="col-md-6 col-lg-4">
+                <div class="col-md-6 col-lg-4 mb-4">
                     <div class="pet-card">
-                        <img src="https://images.unsplash.com/photo-1592194996308-7b43878e84a6?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80" class="pet-img w-100" alt="Maine Coon Cat">
+                        <img src="https://images.unsplash.com/photo-1592194996308-7b43878e84a6?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80"
+                            class="pet-img" alt="Maine Coon Cat">
                         <div class="p-4">
                             <div class="d-flex justify-content-between align-items-center mb-3">
                                 <h4 class="mb-0">Luna</h4>
@@ -422,7 +430,8 @@
                                 <i class="fas fa-map-marker-alt"></i>
                                 <span>Mumbai, Maharashtra</span>
                             </div>
-                            <p class="mt-3">Gentle giant. Very affectionate and gets along with other pets. Litter trained.</p>
+                            <p class="mt-3">Gentle giant. Very affectionate and gets along with other pets. Litter
+                                trained.</p>
                             <div class="d-flex justify-content-between align-items-center">
                                 <a href="#" class="btn btn-outline-primary">View Details</a>
                                 <span class="text-primary fw-bold">₹7,500</span>
@@ -430,11 +439,12 @@
                         </div>
                     </div>
                 </div>
-                
+
                 <!-- Pet 3 -->
-                <div class="col-md-6 col-lg-4">
+                <div class="col-md-6 col-lg-4 mb-4">
                     <div class="pet-card">
-                        <img src="https://images.unsplash.com/photo-1585110396000-c9ffd4e4b308?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80" class="pet-img w-100" alt="Rabbit">
+                        <img src="https://images.unsplash.com/photo-1585110396000-c9ffd4e4b308?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80"
+                            class="pet-img" alt="Rabbit">
                         <div class="p-4">
                             <div class="d-flex justify-content-between align-items-center mb-3">
                                 <h4 class="mb-0">Coco</h4>
@@ -452,7 +462,8 @@
                                 <i class="fas fa-map-marker-alt"></i>
                                 <span>Pune, Maharashtra</span>
                             </div>
-                            <p class="mt-3">Curious and energetic. Loves to explore and play with toys. Cage trained.</p>
+                            <p class="mt-3">Curious and energetic. Loves to explore and play with toys. Cage trained.
+                            </p>
                             <div class="d-flex justify-content-between align-items-center">
                                 <a href="#" class="btn btn-outline-primary">View Details</a>
                                 <span class="text-primary fw-bold">₹3,000</span>
@@ -460,19 +471,20 @@
                         </div>
                     </div>
                 </div>
-                
+
                 <!-- Pet 4 -->
                 <div class="col-md-6 col-lg-4">
                     <div class="pet-card">
-                        <img src="https://images.unsplash.com/photo-1577023311544-360c127e2b8e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80" class="pet-img w-100" alt="German Shepherd">
+                        <img src="asset/irish-setter.jpg"
+                            class="pet-img" alt="German Shepherd">
                         <div class="p-4">
                             <div class="d-flex justify-content-between align-items-center mb-3">
-                                <h4 class="mb-0">Rocky</h4>
+                                <h4 class="mb-0">Cookie</h4>
                                 <span class="badge-pet">Male</span>
                             </div>
                             <div class="pet-feature">
                                 <i class="fas fa-paw"></i>
-                                <span>German Shepherd</span>
+                                <span>Shizu</span>
                             </div>
                             <div class="pet-feature">
                                 <i class="fas fa-birthday-cake"></i>
@@ -482,7 +494,8 @@
                                 <i class="fas fa-map-marker-alt"></i>
                                 <span>Bangalore, Karnataka</span>
                             </div>
-                            <p class="mt-3">Loyal and protective. Trained in basic commands. Good with older children.</p>
+                            <p class="mt-3">Loyal and protective. Trained in basic commands. Good with older children.
+                            </p>
                             <div class="d-flex justify-content-between align-items-center">
                                 <a href="#" class="btn btn-outline-primary">View Details</a>
                                 <span class="text-primary fw-bold">₹8,000</span>
@@ -490,15 +503,16 @@
                         </div>
                     </div>
                 </div>
-                
+
                 <!-- Pet 5 -->
                 <div class="col-md-6 col-lg-4">
                     <div class="pet-card">
-                        <img src="https://images.unsplash.com/photo-1533738363-b7f9aef128ce?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=735&q=80" class="pet-img w-100" alt="Cat">
+                        <img src="https://images.unsplash.com/photo-1533738363-b7f9aef128ce?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=735&q=80"
+                            class="pet-img" alt="Cat">
                         <div class="p-4">
                             <div class="d-flex justify-content-between align-items-center mb-3">
                                 <h4 class="mb-0">Mittens</h4>
-                                <span class="badge-pet">Male</span>
+                                <span class="badge-adoption">Adoption</span>
                             </div>
                             <div class="pet-feature">
                                 <i class="fas fa-paw"></i>
@@ -512,19 +526,21 @@
                                 <i class="fas fa-map-marker-alt"></i>
                                 <span>Pune, Maharashtra</span>
                             </div>
-                            <p class="mt-3">Playful kitten looking for a forever home. Litter trained and vaccinated.</p>
+                            <p class="mt-3">Playful kitten looking for a forever home. Litter trained and vaccinated.
+                            </p>
                             <div class="d-flex justify-content-between align-items-center">
                                 <a href="#" class="btn btn-outline-primary">View Details</a>
-                                <span class="text-primary fw-bold">Adoption</span>
+                                <span class="text-primary fw-bold">Free</span>
                             </div>
                         </div>
                     </div>
                 </div>
-                
+
                 <!-- Pet 6 -->
                 <div class="col-md-6 col-lg-4">
                     <div class="pet-card">
-                        <img src="https://images.unsplash.com/photo-1559056199-641a0ac8b55e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80" class="pet-img w-100" alt="Parrot">
+                        <img src="https://images.unsplash.com/photo-1559056199-641a0ac8b55e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
+                            class="pet-img" alt="Parrot">
                         <div class="p-4">
                             <div class="d-flex justify-content-between align-items-center mb-3">
                                 <h4 class="mb-0">Kiwi</h4>
@@ -551,7 +567,7 @@
                     </div>
                 </div>
             </div>
-            
+
             <!-- Pagination -->
             <nav aria-label="Page navigation">
                 <ul class="pagination">
@@ -575,21 +591,24 @@
             <h2 class="section-title text-center">Why Use PetSpace Finder?</h2>
             <div class="row mt-5">
                 <div class="col-md-4 text-center mb-4">
-                    <div class="bg-primary rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 80px; height: 80px;">
+                    <div class="bg-primary rounded-circle d-inline-flex align-items-center justify-content-center mb-3"
+                        style="width: 80px; height: 80px;">
                         <i class="fas fa-shield-alt fa-2x text-white"></i>
                     </div>
                     <h4>Verified Listings</h4>
                     <p>All pets and breeders are verified by our team to ensure authenticity and quality.</p>
                 </div>
                 <div class="col-md-4 text-center mb-4">
-                    <div class="bg-primary rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 80px; height: 80px;">
+                    <div class="bg-primary rounded-circle d-inline-flex align-items-center justify-content-center mb-3"
+                        style="width: 80px; height: 80px;">
                         <i class="fas fa-heart fa-2x text-white"></i>
                     </div>
                     <h4>Health Guarantee</h4>
                     <p>Health checks and vaccinations are documented for every pet listed on our platform.</p>
                 </div>
                 <div class="col-md-4 text-center mb-4">
-                    <div class="bg-primary rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 80px; height: 80px;">
+                    <div class="bg-primary rounded-circle d-inline-flex align-items-center justify-content-center mb-3"
+                        style="width: 80px; height: 80px;">
                         <i class="fas fa-handshake fa-2x text-white"></i>
                     </div>
                     <h4>Support System</h4>
@@ -630,6 +649,7 @@
                     <h5 class="mb-4">Services</h5>
                     <ul class="list-unstyled footer-links">
                         <li class="mb-2"><a href="pet_finder.html">Pet Finder</a></li>
+                        <li class="mb-2"><a href="find_stud.html">Find Stud</a></li>
                         <li class="mb-2"><a href="#">Find Vet</a></li>
                         <li class="mb-2"><a href="#">Pet Training</a></li>
                         <li class="mb-2"><a href="#">Pet Hostels</a></li>
@@ -666,29 +686,70 @@
 
     <!-- Scroll to Top Button -->
     <button id="scrollTopBtn" title="Go to top">
-        <i class="fas fa-arrow-up"></i>
+        <svg class="progress-circle" viewBox="0 0 36 36">
+            <circle class="progress-circle-bg" cx="18" cy="18" r="16"></circle>
+            <circle class="progress-circle-fill" cx="18" cy="18" r="16" stroke-dasharray="100 100"
+                stroke-dashoffset="100"></circle>
+        </svg>
+        <div class="pulse-effect"></div>
+        <i class="fas fa-arrow-up arrow-icon"></i>
     </button>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q"
         crossorigin="anonymous"></script>
 
+    <!-- Scroll Button Script -->
     <script>
-        // Scroll to top button functionality
         const scrollTopBtn = document.getElementById("scrollTopBtn");
+        const progressFill = document.querySelector('.progress-circle-fill');
+        const pulseEffect = document.querySelector('.pulse-effect');
 
-        window.onscroll = function() {
+
+
+        // Calculate scroll percentage
+        function getScrollPercentage() {
+            const scrollPosition = document.documentElement.scrollTop || document.body.scrollTop;
+            const windowHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            return (scrollPosition / windowHeight) * 100;
+        }
+
+        // Update progress circle
+        function updateProgressCircle() {
+            const scrollPercent = getScrollPercentage();
+            const offset = 100 - scrollPercent;
+            progressFill.style.strokeDashoffset = offset;
+        }
+
+        window.onscroll = function () {
             if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
                 scrollTopBtn.classList.add('show');
+                updateProgressCircle();
             } else {
                 scrollTopBtn.classList.remove('show');
             }
         };
 
-        scrollTopBtn.addEventListener("click", function() {
+        scrollTopBtn.addEventListener("click", function () {
             window.scrollTo({ top: 0, behavior: "smooth" });
+
+            // Add click animation
+            this.classList.add('clicked');
+            setTimeout(() => {
+                this.classList.remove('clicked');
+            }, 300);
+        });
+
+        // Add pulse animation on hover
+        scrollTopBtn.addEventListener('mouseenter', () => {
+            pulseEffect.style.animation = 'pulse 2s infinite';
+        });
+
+        scrollTopBtn.addEventListener('mouseleave', () => {
+            pulseEffect.style.animation = 'none';
         });
     </script>
+
 </body>
 
 </html>
