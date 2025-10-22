@@ -11,11 +11,6 @@
         integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        :root {
-            --primary: #0d6efd;
-            --secondary: #6c757d;
-            --dark: #343a40;
-        }
         
         .cm_b a:hover {
             color: brown;
@@ -52,7 +47,7 @@
         }
 
         .trainerfinder-hero {
-            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.4)), url('asset/trainer_banner.jpg');
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.4)), url('asset/pet\ trainer\ banner.jpg');
             background-size: cover;
             background-position: center;
             color: white;
@@ -189,38 +184,6 @@
             transform: translateY(-3px);
         }
 
-        /* Scroll to Top Button */
-        #scrollTopBtn {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            background: var(--primary);
-            color: white;
-            border: none;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            opacity: 0;
-            visibility: hidden;
-            transition: all 0.3s;
-            z-index: 1000;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-        }
-
-        #scrollTopBtn.show {
-            opacity: 1;
-            visibility: visible;
-        }
-
-        #scrollTopBtn:hover {
-            background: #0b5ed7;
-            transform: translateY(-3px);
-        }
-
         .trainer-rating {
             color: #ffc107;
         }
@@ -240,43 +203,9 @@
             box-shadow: none;
         }
         
-        .progress-circle {
-            width: 100%;
-            height: 100%;
-            position: absolute;
-            top: 0;
-            left: 0;
-            transform: rotate(-90deg);
-        }
+
         
-        .progress-circle-bg {
-            fill: none;
-            stroke: rgba(255, 255, 255, 0.2);
-            stroke-width: 2;
-        }
-        
-        .progress-circle-fill {
-            fill: none;
-            stroke: white;
-            stroke-width: 2;
-            stroke-dasharray: 100;
-            stroke-dashoffset: 100;
-            transition: stroke-dashoffset 0.3s;
-        }
-        
-        .pulse-effect {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            border-radius: 50%;
-            background: transparent;
-            box-shadow: 0 0 0 0 rgba(13, 110, 253, 0.7);
-        }
-        
-        .arrow-icon {
-            position: relative;
-            z-index: 2;
-        }
+
         
         @keyframes pulse {
             0% {
@@ -469,7 +398,7 @@
                 <!-- Trainer 1 -->
                 <div class="col-md-6 col-lg-4 mb-4">
                     <div class="trainer-card">
-                        <img src="https://images.unsplash.com/photo-1587300003388-59208cc962cb?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
+                        <img src="asset/t1.jpg"
                             class="trainer-img" alt="Rahul Verma">
                         <div class="p-4">
                             <div class="d-flex justify-content-between align-items-center mb-3">
@@ -511,7 +440,7 @@
                 <!-- Trainer 2 -->
                 <div class="col-md-6 col-lg-4 mb-4">
                     <div class="trainer-card">
-                        <img src="https://images.unsplash.com/photo-1548199973-03cce0bbc87b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1169&q=80"
+                        <img src="asset/t2.jpg"
                             class="trainer-img" alt="Priya Sharma">
                         <div class="p-4">
                             <div class="d-flex justify-content-between align-items-center mb-3">
@@ -553,7 +482,7 @@
                 <!-- Trainer 3 -->
                 <div class="col-md-6 col-lg-4 mb-4">
                     <div class="trainer-card">
-                        <img src="asset/trainer1.jpg"
+                        <img src="asset/t3.jpg"
                             class="trainer-img" alt="Arjun Patel">
                         <div class="p-4">
                             <div class="d-flex justify-content-between align-items-center mb-3">
@@ -595,7 +524,7 @@
                 <!-- Trainer 4 -->
                 <div class="col-md-6 col-lg-4 mb-4">
                     <div class="trainer-card">
-                        <img src="https://images.unsplash.com/photo-1583511655857-d19b40a7a54e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1169&q=80"
+                        <img src="asset/t4.jpg"
                             class="trainer-img" alt="Neha Singh">
                         <div class="p-4">
                             <div class="d-flex justify-content-between align-items-center mb-3">
@@ -637,7 +566,7 @@
                 <!-- Trainer 5 -->
                 <div class="col-md-6 col-lg-4 mb-4">
                     <div class="trainer-card">
-                        <img src="asset/trainer2.jpg"
+                        <img src="asset/t5.jpg"
                             class="trainer-img" alt="Vikram Joshi">
                         <div class="p-4">
                             <div class="d-flex justify-content-between align-items-center mb-3">
@@ -679,7 +608,7 @@
                 <!-- Trainer 6 -->
                 <div class="col-md-6 col-lg-4 mb-4">
                     <div class="trainer-card">
-                        <img src="https://images.unsplash.com/photo-1517849845537-4d257902454a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
+                        <img src="asset/t6.jpg"
                             class="trainer-img" alt="Anita Desai">
                         <div class="p-4">
                             <div class="d-flex justify-content-between align-items-center mb-3">
@@ -834,7 +763,8 @@
         </div>
     </footer>
 
-    <!-- Scroll to Top Button -->
+
+        <!-- Scroll to Top Button -->
     <button id="scrollTopBtn" title="Go to top">
         <svg class="progress-circle" viewBox="0 0 36 36">
             <circle class="progress-circle-bg" cx="18" cy="18" r="16"></circle>
@@ -854,6 +784,8 @@
         const scrollTopBtn = document.getElementById("scrollTopBtn");
         const progressFill = document.querySelector('.progress-circle-fill');
         const pulseEffect = document.querySelector('.pulse-effect');
+
+
 
         // Calculate scroll percentage
         function getScrollPercentage() {
@@ -897,6 +829,7 @@
             pulseEffect.style.animation = 'none';
         });
     </script>
+
 
 </body>
 
