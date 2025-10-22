@@ -2,7 +2,7 @@
 
 ### 🌐 **Live Demo**
 
-👉 https://charming-fenglisu-1d824a.netlify.app/ 
+👉 https://zippy-haupia-636713.netlify.app/
 
 ---
 
