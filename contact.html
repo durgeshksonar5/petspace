@@ -15,180 +15,180 @@
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
 </head>
- <style>
-        :root {
-            --primary-color: #2d3748;
-            --secondary-color: #ff6b6b;
-            --light-color: #f8f9fa;
-            --dark-color: #343a40;
-        }
-        
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #f9f9f9;
-        }
-        
-        .cm_b a {
-            color: var(--dark-color);
-            transition: all 0.3s ease;
-        }
-        
-        .cm_b a:hover {
-            color: brown;
-        }
-        
-        .contact-hero {
-            background: linear-gradient(rgba(246, 246, 246, 0.696), rgba(206, 205, 205, 0.326)),
+<style>
+    :root {
+        --primary-color: #2d3748;
+        --secondary-color: #ff6b6b;
+        --light-color: #f8f9fa;
+        --dark-color: #343a40;
+    }
+
+    body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background-color: #f9f9f9;
+    }
+
+    .cm_b a {
+        color: var(--dark-color);
+        transition: all 0.3s ease;
+    }
+
+    .cm_b a:hover {
+        color: brown;
+    }
+
+    .contact-hero {
+        background: linear-gradient(rgba(246, 246, 246, 0.696), rgba(206, 205, 205, 0.326)),
             url('asset/hero_bannr.jpg');
-            background-size: cover;
-            background-position: center;
-            padding: 100px 0;
-            color: #2d3748;
-            border-radius: 20px;
-            margin-top: 30px;
-        }
-        
-        .contact-card {
-            background: white;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            height: 100%;
-        }
-        
-        .contact-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
-        }
-        
-        .contact-icon {
-            width: 70px;
-            height: 70px;
-            border-radius: 50%;
-            background: rgba(12, 47, 92, 0.1);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 20px;
-            color: var(--primary-color);
-            font-size: 24px;
-        }
-        
-        .contact-form {
-            background: white;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-            padding: 30px;
-        }
-        
-        .form-control {
-            border: 2px solid #e9ecef;
-            border-radius: 10px;
-            padding: 12px 15px;
-            margin-bottom: 20px;
-            transition: all 0.3s ease;
-        }
-        
-        .form-control:focus {
-            border-color: var(--primary-color);
-            box-shadow: 0 0 0 0.25rem rgba(12, 47, 92, 0.25);
-        }
-        
-        .btn-primary {
-            background-color: var(--primary-color);
-            border-color: var(--primary-color);
-            border-radius: 10px;
-            padding: 12px 30px;
-            font-weight: 600;
-            transition: all 0.3s ease;
-        }
-        
-        .btn-primary:hover {
-            background-color: #0a2647;
-            border-color: #0a2647;
-            transform: translateY(-2px);
-        }
-        
-        .map-container {
-            border-radius: 15px;
-            overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-        }
-        
-        .social-icon {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            background: var(--light-color);
-            color: var(--primary-color);
-            margin-right: 10px;
-            transition: all 0.3s ease;
-        }
-        
-        .social-icon:hover {
-            background: var(--primary-color);
-            color: white;
-            transform: translateY(-3px);
-        }
-        
-        .faq-item {
-            margin-bottom: 15px;
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-        }
-        
-        .faq-question {
-            background: white;
-            padding: 15px 20px;
-            cursor: pointer;
-            font-weight: 600;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        
-        .faq-answer {
-            padding: 0 20px;
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.3s ease, padding 0.3s ease;
-            background: #f8f9fa;
-        }
-        
-        .faq-item.active .faq-answer {
-            max-height: 200px;
-            padding: 15px 20px;
-        }
-        
-        footer {
-            background: var(--primary-color);
-            color: white;
-            padding: 60px 0 30px;
-            margin-top: 80px;
-        }
-        
-        .footer-links a {
-            color: rgba(255, 255, 255, 0.8);
-            text-decoration: none;
-            transition: all 0.3s ease;
-        }
-    
-        
-    </style>
+        background-size: cover;
+        background-position: center;
+        padding: 100px 0;
+        color: #2d3748;
+        border-radius: 20px;
+        margin-top: 30px;
+    }
+
+    .contact-card {
+        background: white;
+        border-radius: 15px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        height: 100%;
+    }
+
+    .contact-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+    }
+
+    .contact-icon {
+        width: 70px;
+        height: 70px;
+        border-radius: 50%;
+        background: rgba(12, 47, 92, 0.1);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto 20px;
+        color: var(--primary-color);
+        font-size: 24px;
+    }
+
+    .contact-form {
+        background: white;
+        border-radius: 15px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        padding: 30px;
+    }
+
+    .form-control {
+        border: 2px solid #e9ecef;
+        border-radius: 10px;
+        padding: 12px 15px;
+        margin-bottom: 20px;
+        transition: all 0.3s ease;
+    }
+
+    .form-control:focus {
+        border-color: var(--primary-color);
+        box-shadow: 0 0 0 0.25rem rgba(12, 47, 92, 0.25);
+    }
+
+    .btn-primary {
+        background-color: var(--primary-color);
+        border-color: var(--primary-color);
+        border-radius: 10px;
+        padding: 12px 30px;
+        font-weight: 600;
+        transition: all 0.3s ease;
+    }
+
+    .btn-primary:hover {
+        background-color: #0a2647;
+        border-color: #0a2647;
+        transform: translateY(-2px);
+    }
+
+    .map-container {
+        border-radius: 15px;
+        overflow: hidden;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    }
+
+    .social-icon {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background: var(--light-color);
+        color: var(--primary-color);
+        margin-right: 10px;
+        transition: all 0.3s ease;
+    }
+
+    .social-icon:hover {
+        background: var(--primary-color);
+        color: white;
+        transform: translateY(-3px);
+    }
+
+    .faq-item {
+        margin-bottom: 15px;
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    }
+
+    .faq-question {
+        background: white;
+        padding: 15px 20px;
+        cursor: pointer;
+        font-weight: 600;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .faq-answer {
+        padding: 0 20px;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease, padding 0.3s ease;
+        background: #f8f9fa;
+    }
+
+    .faq-item.active .faq-answer {
+        max-height: 200px;
+        padding: 15px 20px;
+    }
+
+    footer {
+        background: var(--primary-color);
+        color: white;
+        padding: 60px 0 30px;
+        margin-top: 80px;
+    }
+
+    .footer-links a {
+        color: rgba(255, 255, 255, 0.8);
+        text-decoration: none;
+        transition: all 0.3s ease;
+    }
+</style>
 
 <body>
     <!-- navbar -->
-         <!-- navbar -->
+    <!-- navbar -->
     <nav class="navbar navbar-expand-lg bg-white sticky-top shadow-sm">
         <div class="container-fluid fs-6">
-            <a class="navbar-brand" href="#"> <img src="asset/petspace_crop-removebg.png" alt="PetSpace" height="50px"></a>
+            <a class="navbar-brand" href="#"> <img src="asset/petspace_crop-removebg.png" alt="PetSpace"
+                    height="50px"></a>
 
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
-                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
 
@@ -204,8 +204,8 @@
                     </li>
 
                     <li class="nav-item dropdown cm_b">
-                        <a class="nav-link active dropdown-toggle active" href="#" role="button" data-bs-toggle="dropdown"
-                            aria-expanded="false">
+                        <a class="nav-link active dropdown-toggle active" href="#" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
                             Services
                         </a>
                         <ul class="dropdown-menu">
@@ -242,14 +242,17 @@
         </div>
     </nav>
 
-     <div class="container contact-hero mb-5">
+    <div class="container contact-hero mb-5">
         <div class="row">
             <div class="col-lg-8 mx-auto text-center">
                 <h1 class="display-4 fw-bold mb-4">Get in Touch With TailO</h1>
-                <p class="lead mb-4"><b> We're here to help you with all your pet care needs. Reach out to us with questions, feedback, or partnership opportunities.</b></p>
+                <p class="lead mb-4"><b> We're here to help you with all your pet care needs. Reach out to us with
+                        questions, feedback, or partnership opportunities.</b></p>
                 <div class="d-flex justify-content-center flex-wrap">
-                    <a href="#contact-form" class="btn btn-light btn-lg rounded-pill px-4 py-2 me-3 mb-3    ">Send a Message</a>
-                    <a href="#contact-info" class="btn btn-outline-light btn-lg rounded-pill px-4 py-2 mb-3">Contact Info</a>
+                    <a href="#contact-form" class="btn btn-light btn-lg rounded-pill px-4 py-2 me-3 mb-3    ">Send a
+                        Message</a>
+                    <a href="#contact-info" class="btn btn-outline-light btn-lg rounded-pill px-4 py-2 mb-3">Contact
+                        Info</a>
                 </div>
             </div>
         </div>
@@ -265,7 +268,7 @@
                     </div>
                     <h4>Our Location</h4>
                     <p>A26 Chinchwad, Pune, Maharashtra 411033</p>
-                    <a href="#" class="btn btn-outline-primary mt-2">View on Map</a>
+                    <a href="" class="btn btn-outline-primary mt-2">View on Map</a>
                 </div>
             </div>
             <div class="col-md-4">
@@ -323,8 +326,10 @@
 
             <div class="col-lg-5">
                 <div class="map-container">
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3782.2654764067003!2d73.806559075997!3d18.564382382533434!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bc2bf8c84f0d70d%3A0x7f5e3c2b4b4c4b4c!2sChinchwad%2C%20Pune%2C%20Maharashtra%20411033!5e0!3m2!1sen!2sin!4v1647850000000!5m2!1sen!2sin" 
-                            width="100%" height="475px" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                    <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1653.7687054672506!2d73.7685932435063!3d18.63503457376029!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bc2b9952c5462c5%3A0xc4163c5262ce00fc!2sSiddheshwar%20Colony%20Rd%2C%20Nandanvan%20Colony%2C%20Akurdi%2C%20Pimpri-Chinchwad%2C%20Maharashtra%20411033!5e0!3m2!1sen!2sin!4v1763102075162!5m2!1sen!2sin"
+                        width="100%" height="475px" style="border:0;" allowfullscreen="" loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade"></iframe>
                 </div>
             </div>
         </div>
@@ -338,7 +343,7 @@
                     <h2 class="fw-bold">Frequently Asked Questions</h2>
                     <p class="lead">Find quick answers to common questions about our services</p>
                 </div>
-                
+
                 <div class="faq-container">
                     <div class="faq-item">
                         <div class="faq-question">
@@ -346,7 +351,9 @@
                             <i class="fas fa-chevron-down"></i>
                         </div>
                         <div class="faq-answer">
-                            Creating an account is simple! Click on the "Login Here" button at the top right corner and follow the registration process. You'll need to provide some basic information about yourself and your pets.
+                            Creating an account is simple! Click on the "Login Here" button at the top right corner and
+                            follow the registration process. You'll need to provide some basic information about
+                            yourself and your pets.
                         </div>
                     </div>
 
@@ -357,27 +364,33 @@
                             <i class="fas fa-chevron-down"></i>
                         </div>
                         <div class="faq-answer">
-                            After creating an account, go to your dashboard and click on "Add Service". Fill in the details about your service, add photos, and set your availability. Our team will review your listing before it goes live.
+                            After creating an account, go to your dashboard and click on "Add Service". Fill in the
+                            details about your service, add photos, and set your availability. Our team will review your
+                            listing before it goes live.
                         </div>
                     </div>
-                    
+
                     <div class="faq-item">
                         <div class="faq-question">
                             What areas do you currently serve?
                             <i class="fas fa-chevron-down"></i>
                         </div>
                         <div class="faq-answer">
-                            We currently operate in Pune and surrounding areas. We're expanding rapidly, so if your city isn't listed yet, please contact us to express interest and we'll notify you when we launch in your area.
+                            We currently operate in Pune and surrounding areas. We're expanding rapidly, so if your city
+                            isn't listed yet, please contact us to express interest and we'll notify you when we launch
+                            in your area.
                         </div>
                     </div>
-                    
+
                     <div class="faq-item">
                         <div class="faq-question">
                             How does TailO ensure the quality of service providers?
                             <i class="fas fa-chevron-down"></i>
                         </div>
                         <div class="faq-answer">
-                            We carefully vet all service providers on our platform. They must provide necessary certifications, undergo background checks, and maintain high ratings from our community. We also have a review system to help maintain quality standards.
+                            We carefully vet all service providers on our platform. They must provide necessary
+                            certifications, undergo background checks, and maintain high ratings from our community. We
+                            also have a review system to help maintain quality standards.
                         </div>
                     </div>
                 </div>
@@ -385,7 +398,7 @@
         </div>
     </div>
 
-  <!-- footer -->
+    <!-- footer -->
     <footer class="mt-5">
         <div class="container">
             <div class="row">
@@ -519,6 +532,7 @@
 
 
 
-    
+
 </body>
+
 </html>
