@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>PetSpace</title>
+    <title>PetSpace (Why Petspace)</title>
     <link rel="icon" type="image/x-icon" href="asset/android-chrome-512x512.png">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
@@ -16,17 +16,21 @@
 </head>
 
 <body>
-
     <!-- navbar -->
-    <nav class="navbar navbar-expand-lg bg-white sticky-top">
+    <nav class="navbar navbar-expand-lg bg-white sticky-top shadow-sm">
         <div class="container-fluid fs-6">
-            <a class="navbar-brand" href="#"> <img src="asset/petspace_crop-removebg.png" alt="" height="50px"></a>
+            <a class="navbar-brand" href="#"> <img src="asset/petspace_crop-removebg.png" alt="PetSpace" height="50px"></a>
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
 
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0 fw-medium">
 
                     <li class="nav-item cm_b">
-                        <a class="nav-link " aria-current="page" href="index.html">Home</a>
+                        <a class="nav-link" aria-current="page" href="index.html">Home</a>
                     </li>
 
                     <li class="nav-item cm_b">
@@ -34,7 +38,7 @@
                     </li>
 
                     <li class="nav-item dropdown cm_b">
-                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                        <a class="nav-link  dropdown-toggle active" href="#" role="button" data-bs-toggle="dropdown"
                             aria-expanded="false">
                             Services
                         </a>
@@ -42,7 +46,7 @@
                             <li><a class="dropdown-item" href="pet_finder.html">Pet Finder</a></li>
                             <li><a class="dropdown-item" href="find_stud.html">Find Stud</a></li>
                             <li><a class="dropdown-item" href="find_vet.html">Find vet/ Doctor</a></li>
-                            <li><a class="dropdown-item" href="find_trainer.html">Find Trainer</a></li>
+                            <li><a class="dropdown-item" href="#">Find Trainer</a></li>
                             <li><a class="dropdown-item" href="#">Find Petshop</a></li>
                             <li><a class="dropdown-item" href="#">Find Hostel</a></li>
                             <li><a class="dropdown-item" href="#">Find Shelter</a></li>
@@ -62,7 +66,7 @@
                 </ul>
 
                 <form class="d-flex shadow-sm rounded-3" role="search" style="height: 40px;">
-                    <a href="login.html" class="btn btn-outline-secondary fs-6" type="submit"> <b><i
+                    <a href="login.html" class="btn btn-outline-dark fs-6" type="submit"> <b><i
                                 class="fa-regular fa-user"></i>
                             Hello,
                             Login Here...</b> </a>
@@ -235,8 +239,8 @@
         </div>
 
         <div class="row">
-            <div class="col-6"> <img src="asset/pet_event.svg" alt="" height="400px"></div>
-            <div class="col-6">
+            <div class="col-6 col-md-6"> <img src="asset/pet_event.svg" alt="" height="400px"></div>
+            <div class="col-6 col-md-6">
                 <h1 style="margin-top: 60px;"><b>Find Dog/ Cat Show</b></h1>
                 <p>
                     Do you want your pet to participate in a dog/ cat show? Great! You‘re at the right place. We are
@@ -254,18 +258,11 @@
 
     </div>
 
-
-
-
-
-
-
-
     <!-- footer -->
-    <footer class="mt-5">
+    <footer class="mt-5 col-12 col-md-12ko">
         <div class="container">
             <div class="row">
-                <div class="col-lg-4 mb-4">
+                <div class="col-lg-4 col-md-4 mb-4">
                     <img src="asset/petspace_footer-removebg-preview.png" alt="PetSpace Logo" class="mb-3" height="40">
                     <p class="mb-4">PetSpace is your premier online pet community, connecting pet lovers with trusted
                         services and resources for all their pet care needs.</p>
@@ -282,18 +279,18 @@
                     <ul class="list-unstyled footer-links">
                         <li class="mb-2"><a href="index.html">Home</a></li>
                         <li class="mb-2"><a href="whyPetSpace.html">About Us</a></li>
-                        <li class="mb-2"><a href="#">Services</a></li>
+                        <li class="mb-2"><a href="pet_finder.html">Services</a></li>
                         <li class="mb-2"><a href="#">Testimonials</a></li>
-                        <li class="mb-2"><a href="#">Contact</a></li>
+                        <li class="mb-2"><a href="contact.html">Contact</a></li>
                     </ul>
                 </div>
 
                 <div class="col-lg-2 col-md-4 mb-4">
                     <h5 class="mb-4">Services</h5>
                     <ul class="list-unstyled footer-links">
-                        <li class="mb-2"><a href="#">Pet Finder</a></li>
-                        <li class="mb-2"><a href="#">Find Vet</a></li>
-                        <li class="mb-2"><a href="#">Pet Training</a></li>
+                        <li class="mb-2"><a href="pet_finder.html">Pet Finder</a></li>
+                        <li class="mb-2"><a href="find_vet.html">Find Vet</a></li>
+                        <li class="mb-2"><a href="find_trainer.html">Pet Training</a></li>
                         <li class="mb-2"><a href="#">Pet Hostels</a></li>
                         <li class="mb-2"><a href="#">Pet Events</a></li>
                     </ul>
