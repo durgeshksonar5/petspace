@@ -110,6 +110,3 @@ If you’d like to contribute:
 🔗 (https://github.com/durgeshksonar5)
 
 ---
-
-Would you like me to **customize this README** with your actual GitHub username, email, and project link (if hosted on GitHub Pages)?
-I can format it perfectly for direct upload as `README.md`.
